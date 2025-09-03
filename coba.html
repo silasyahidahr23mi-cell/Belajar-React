@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>soal2</title>
+  <style>
+    button {
+      background-color: pink;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      margin: 5px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .counter-box {
+      display: inline-block;
+      text-align: center;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel">
+    function Counter() {
+      const [count, setCount] = React.useState(0);
+
+      const increment = () => setCount(prev => prev + 1);
+      const decrement = () => setCount(prev => prev - 1);
+      const reset = () => setCount(0);
+
+      const displayValue = count > 4 || count < 0 ? "Selesai🖊️" : count;
+
+      return (
+        <div className="counter-box">
+          <h4>Hit Counter</h4>
+          <div>
+            <button onClick={decrement}>-</button>
+            <span style={{ margin: '0 10px' }}>{displayValue}</span>
+            <button onClick={increment}>+</button>
+          </div>
+          <button onClick={reset}>Reset</button>
+        </div>
+      );
+    }
+
+    function App() {
+      return (
+        <div>
+          <Counter />
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+</body>
+</html>
